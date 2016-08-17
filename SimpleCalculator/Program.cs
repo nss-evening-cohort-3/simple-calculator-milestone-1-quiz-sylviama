@@ -10,6 +10,8 @@ namespace SimpleCalculator
     {
         static void Main(string[] args)
         {
+            Console.Write("[X]>");
+            Console.ReadLine();
         }
     }
 }
