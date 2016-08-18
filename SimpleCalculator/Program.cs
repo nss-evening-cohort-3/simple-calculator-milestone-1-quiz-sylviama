@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace SimpleCalculator
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -17,9 +17,25 @@ namespace SimpleCalculator
             Match m = Regex.Match(inputString, pattern);
             if(m.Success==true)
             {
-                Console.WriteLine(m.Groups["digit1"].Value);
-                Console.WriteLine(m.Groups["operation"].Value);
-                Console.WriteLine(m.Groups["digit2"].Value);
+                int number1 = int.Parse(m.Groups["digit1"].Value);
+                int number2 = int.Parse(m.Groups["digit2"].Value);
+                string operation = m.Groups["operation"].Value;
+                if(operation=="+")
+                {
+                    Addition addition = new Addition();
+                    int additionResult = addition.AdditionOperation(number1, number2);
+                    Console.WriteLine("="+additionResult);
+                }else if(operation=="-")
+                {
+                    Console.WriteLine("-");
+                }else if(operation=="*")
+                {
+                    Console.WriteLine("*");
+                }else if(operation=="/")
+                {
+                    Console.WriteLine("/");
+                }
+      
             }
 
 
