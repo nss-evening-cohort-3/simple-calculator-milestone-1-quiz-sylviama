@@ -8,5 +8,9 @@ namespace SimpleCalculator
 {
     public class Division
     {
+        public double DivisionOperation(int number1, int number2)
+        {
+            return number1 / number2;
+        }
     }
 }

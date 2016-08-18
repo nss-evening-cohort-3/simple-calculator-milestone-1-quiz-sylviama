@@ -25,15 +25,28 @@ namespace SimpleCalculator
                     Addition addition = new Addition();
                     int additionResult = addition.AdditionOperation(number1, number2);
                     Console.WriteLine("="+additionResult);
+
+                    Modulus modulus = new Modulus();
+                    int modulusResult = modulus.ModulusFunction(-8);
+                    Console.WriteLine(modulusResult);
                 }else if(operation=="-")
                 {
-                    Console.WriteLine("-");
+                    Subtraction subtraction = new Subtraction();
+                    int subtractionResult = subtraction.SubtractionOperation(number1, number2);
+                    Console.WriteLine("=" + subtractionResult);
                 }else if(operation=="*")
                 {
-                    Console.WriteLine("*");
+                    Multiplication multi = new Multiplication();
+                    int multiResult = multi.MultiplicationOperation(number1, number2);
+                    Console.WriteLine("=" + multiResult);
                 }else if(operation=="/")
                 {
-                    Console.WriteLine("/");
+                    Division divi = new Division();
+                    double diviResult = divi.DivisionOperation(number1, number2);
+                    Console.WriteLine("=" + diviResult);
+                        
+                       
+         
                 }
       
             }

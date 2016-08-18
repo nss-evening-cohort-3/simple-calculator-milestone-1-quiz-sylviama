@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace SimpleCalculator
 {
-    class Subtraction
+    public class Subtraction
     {
+        public int SubtractionOperation(int number1, int number2)
+        {
+            return number1 - number2;
+        }
+
     }
 }
