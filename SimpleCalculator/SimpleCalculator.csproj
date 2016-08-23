@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addition.cs" />
+    <Compile Include="Constant.cs" />
     <Compile Include="Division.cs" />
     <Compile Include="Modulus.cs" />
     <Compile Include="Multiplication.cs" />

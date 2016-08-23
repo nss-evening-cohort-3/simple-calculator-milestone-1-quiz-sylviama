@@ -20,18 +20,23 @@ namespace SimpleCalculator
                 string inputString = Console.ReadLine();
                 string pattern1 = @"(?<digit1>[0-9]+)(?<operation>(\+|\-|\*|\/))(?<digit2>[0-9]+)";
                 string pattern2 = @"\d";
-                string pattern3 = @"(?<constantLetter>[a-zA-Z])(\s?)\=(\s?)(?<constantNumber>\d+)";
+                string constSetPattern = @"(?<constantLetter>[a-zA-Z])(\s?)\=(\s?)(?<constantNumber>\d+)";
                 string exitPattern = @"(exit|quit)";
+                string constGetPattern = @"(?<constLetter>[a-z])$";
+                string constOperationPattern = @"(?<const>[a-zA-Z])(?<operation>(\+|\-))(?<digit>[0-9]+)$";
 
+                //exit pattern
                 Match exit = Regex.Match(inputString.ToLower(), exitPattern);
                 if (exit.Success == true)
                 {
                     break;
                 }
 
+                //operations pattern
                 Match m1 = Regex.Match(inputString, pattern1);
                 if (m1.Success == true)
                 {
+                    Console.WriteLine("regular operation");
                     int number1 = int.Parse(m1.Groups["digit1"].Value);
                     int number2 = int.Parse(m1.Groups["digit2"].Value);
                     string operation = m1.Groups["operation"].Value;
@@ -74,31 +79,51 @@ namespace SimpleCalculator
 
                 }
 
-                Match constantOperation = Regex.Match(inputString, pattern3);
+                //x=5 pattern
+                Match constantOperation = Regex.Match(inputString, constSetPattern);
                 if (constantOperation.Success == true)
                 {
-                    Console.WriteLine("Constant");
-                    string consLetter = constantOperation.Groups["constantLetter"].Value;
+                    Console.WriteLine("x=5 pattern");
+                    char consLetter = char.Parse(constantOperation.Groups["constantLetter"].Value);
                     double consNumber = int.Parse(constantOperation.Groups["constantNumber"].Value);
-                    Console.WriteLine("Saved '" + consLetter + "' as '" + consNumber + "'");
+                    Constant consta = new Constant();
+                    consta.ConstantSetFunction(consLetter, consNumber);
                     counter++;
                     continue;
-
-
                 }
-                //1. repeat
-                //2. counter
+
+                //x pattern
+                Match constantGet = Regex.Match(inputString, constGetPattern);
+                if(constantGet.Success==true)
+                {
+                    Console.WriteLine("x pattern");
+                    char consLetter = char.Parse(constantGet.Groups["constLetter"].Value);
+                    Constant consGet = new Constant();
+                    consGet.ConstantGetFunction(consLetter);
+                    counter++;
+                    continue;
+                }
+
+                //x+1 pattern
+                Match constOperation = Regex.Match(inputString, constOperationPattern);
+                if(constOperation.Success==true)
+                {
+                    Console.WriteLine("constant + 1 pattern");
+                    char consLetter = char.Parse(constOperation.Groups["const"].Value);
+                    string operation = constOperation.Groups["operation"].Value;
+                    int number = int.Parse(constOperation.Groups["digit"].Value);
+                    Constant constOper = new Constant();
+                    constOper.constOperationFunction(consLetter, operation, number);
+                    counter++;
+                    continue;
+                    
+                }
+                
                 //3. catch error
                 //4. constant
                 //5. modulus
                 //6. last
 
-
-
-
-                //string digitString2=Regex.Match(inputString, );
-
-                //Console.WriteLine(digitString1);
             }
                 Console.WriteLine("End");
                 Console.ReadLine();
