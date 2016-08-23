@@ -41,10 +41,10 @@ namespace SimpleCalculator
             
         }
 
-        //
+        //x+5 pattern
         public void constOperationFunction(char x, string y, int z)
         {
-            //Console.WriteLine(z);
+           
             int counter = 0;
             foreach (KeyValuePair<char, double> constpair in dic)
             {
@@ -76,5 +76,7 @@ namespace SimpleCalculator
             }
 
         }
+
+        //x+y pattern
     }
 }

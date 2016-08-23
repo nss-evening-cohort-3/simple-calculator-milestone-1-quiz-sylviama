@@ -8,16 +8,9 @@ namespace SimpleCalculator
 {
     public class Modulus
     {
-        public int ModulusFunction(int number)
+        public int ModulusFunction(string sign, int number)
         {
-            if(number>=0)
-            {
-                return number;
-            }
-            else
-            {
-                return -number;
-            }
+            return number;
         }
     }
 }

@@ -18,8 +18,8 @@ namespace SimpleCalculator
                 Console.Write("[{0}]>", counter);
 
                 string inputString = Console.ReadLine();
-                string pattern1 = @"(?<digit1>[0-9]+)(?<operation>(\+|\-|\*|\/))(?<digit2>[0-9]+)$";
-                //string pattern2 = @"\d";
+                string RegurlarCalculationPattern = @"(?<digit1>[0-9]+)(?<operation>(\+|\-|\*|\/))(?<digit2>[0-9]+)$";
+                string modulusPattern = @"\|(?<sign>\-?)(?<number>\d+)\|$";
                 string constSetPattern = @"(?<constantLetter>[a-zA-Z])(\s?)\=(\s?)(?<constantNumber>\d+)$";
                 string exitPattern = @"(exit|quit)";
                 string constGetPattern = @"(?<constLetter>[a-z])$";
@@ -32,8 +32,8 @@ namespace SimpleCalculator
                     break;
                 }
 
-                //operations pattern
-                Match m1 = Regex.Match(inputString, pattern1);
+                //regular calculation pattern
+                Match m1 = Regex.Match(inputString, RegurlarCalculationPattern);
                 if (m1.Success == true)
                 {
                     Console.WriteLine("regular operation");
@@ -48,9 +48,7 @@ namespace SimpleCalculator
                         counter++;
                         continue;
 
-                        //Modulus modulus = new Modulus();
-                        //int modulusResult = modulus.ModulusFunction(-8);
-                        //Console.WriteLine(modulusResult);
+                        
                     }
                     else if (operation == "-")
                     {
@@ -76,6 +74,21 @@ namespace SimpleCalculator
                         counter++;
                         continue;
                     }
+
+                }
+
+                //modulus pattern
+                Match modulusOperation = Regex.Match(inputString, modulusPattern);
+                if(modulusOperation.Success==true)
+                {
+                    Console.WriteLine("Modulus Pattern");
+                    int modulusNum = int.Parse(modulusOperation.Groups["number"].Value);
+                    string ifSign = modulusOperation.Groups["sign"].Value;
+                    Modulus modulus = new Modulus();
+                    int modulusResult = modulus.ModulusFunction(ifSign, modulusNum);
+                    Console.WriteLine(modulusResult);
+                    counter++;
+                    continue;
 
                 }
 
