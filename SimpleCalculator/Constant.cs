@@ -15,10 +15,17 @@ namespace SimpleCalculator
         //x=5 pattern
         public void ConstantSetFunction(char x, double y)
         {
-            dic.Add('a', 0.3);
-            dic.Add(x, y);
-            
-            Console.WriteLine("Saved '{0}' as {1}", x, y);
+            //dic.Add('a', 0.3);
+
+            if(!dic.ContainsKey(x))
+            {
+                dic.Add(x, y);
+                Console.WriteLine("Saved '{0}' as {1}", x, y);
+            }
+            else
+            {
+                Console.WriteLine("Error!");
+            }  
         }
 
         //x pattern

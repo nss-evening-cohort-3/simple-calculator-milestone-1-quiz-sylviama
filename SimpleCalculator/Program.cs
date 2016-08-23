@@ -15,15 +15,15 @@ namespace SimpleCalculator
             while (true)
             {
 
-                Console.Write("[" + counter + "]>");
+                Console.Write("[{0}]>", counter);
 
                 string inputString = Console.ReadLine();
-                string pattern1 = @"(?<digit1>[0-9]+)(?<operation>(\+|\-|\*|\/))(?<digit2>[0-9]+)";
-                string pattern2 = @"\d";
-                string constSetPattern = @"(?<constantLetter>[a-zA-Z])(\s?)\=(\s?)(?<constantNumber>\d+)";
+                string pattern1 = @"(?<digit1>[0-9]+)(?<operation>(\+|\-|\*|\/))(?<digit2>[0-9]+)$";
+                //string pattern2 = @"\d";
+                string constSetPattern = @"(?<constantLetter>[a-zA-Z])(\s?)\=(\s?)(?<constantNumber>\d+)$";
                 string exitPattern = @"(exit|quit)";
                 string constGetPattern = @"(?<constLetter>[a-z])$";
-                string constOperationPattern = @"(?<const>[a-zA-Z])(?<operation>(\+|\-))(?<digit>[0-9]+)$";
+                string constOperationPattern = @"(?<const>[a-zA-Z])(?<operation>(\+|\-|\*|\/))(?<digit>[0-9]+)$";
 
                 //exit pattern
                 Match exit = Regex.Match(inputString.ToLower(), exitPattern);
