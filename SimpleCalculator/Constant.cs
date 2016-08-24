@@ -13,7 +13,7 @@ namespace SimpleCalculator
         public static Dictionary<char, double> dic = new Dictionary<char, double>();
         
         //x=5 pattern
-        public void ConstantSetFunction(char x, double y)
+        public string ConstantSetFunction(char x, double y)
         {
             //dic.Add('a', 0.3);
 
@@ -21,28 +21,34 @@ namespace SimpleCalculator
             {
                 dic.Add(x, y);
                 Console.WriteLine("Saved '{0}' as {1}", x, y);
+                return "Saved " + x + " as " + y;
             }
             else
             {
                 Console.WriteLine("Error!");
+                return "Error";
             }  
         }
 
         //x pattern
-        public void ConstantGetFunction(char x)
+        public string ConstantGetFunction(char x)
         {
             foreach (KeyValuePair<char, double> constpair in dic)
             {
                 if (constpair.Key== x)
                 {
                     Console.WriteLine("{0}", constpair.Value);
-                } 
+                    return Convert.ToString(constpair.Value);
+                }
+                
             }
+
+            return null;
             
         }
 
         //x+5 pattern
-        public void constOperationFunction(char x, string y, int z)
+        public string constOperationFunction(char x, string y, int z)
         {
            
             int counter = 0;
@@ -54,26 +60,38 @@ namespace SimpleCalculator
 
                     if(y=="+")
                     {
-                        Console.WriteLine("={0}", constpair.Value+z);
+                        double result = constpair.Value + z;
+                        Console.WriteLine("={0}", result);
+                        return "=" + result;
                     }else if(y=="-")
                     {
-                        Console.WriteLine("={0}", constpair.Value-z);
+                        double result = constpair.Value - z;
+                        Console.WriteLine("={0}", result);
+                        return "=" + result;
                     }else if(y=="*")
                     {
-                        Console.WriteLine("={0}", constpair.Value*z);
+                        double result = constpair.Value*z;
+                        Console.WriteLine("={0}", result);
+                        return "=" + result;
                     }else if(y=="/")
                     {
-                        Console.WriteLine("={0}", constpair.Value/z);
+                        double result = constpair.Value / z;
+                        Console.WriteLine("={0}", result);
+                        return "=" + result;
                     }
                     
                 }
                 
             }
 
+
             if(counter==0)
             {
                 Console.WriteLine("{0} doesn't exist.", x);
+                return null;
             }
+
+            return null;
 
         }
 
