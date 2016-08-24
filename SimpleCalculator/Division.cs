@@ -8,9 +8,19 @@ namespace SimpleCalculator
 {
     public class Division
     {
-        public double DivisionOperation(int number1, int number2)
+        public string DivisionOperation(int number1, int number2)
         {
-            return number1 / number2;
+            if (number2 != 0)
+            {
+                double num1 = Convert.ToDouble(number1);
+                double num2 = Convert.ToDouble(number2);
+                return Convert.ToString(num1 / num2);
+            }
+            else
+            {
+                Console.WriteLine("Divided Number cannot be 0");
+                return null;
+            }
         }
     }
 }

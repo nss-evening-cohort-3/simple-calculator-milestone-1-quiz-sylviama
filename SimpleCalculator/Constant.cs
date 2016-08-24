@@ -83,8 +83,7 @@ namespace SimpleCalculator
                 }
                 
             }
-
-
+            
             if(counter==0)
             {
                 Console.WriteLine("{0} doesn't exist.", x);
@@ -96,5 +95,62 @@ namespace SimpleCalculator
         }
 
         //x+y pattern
+        public string constOperationFunction(char x, string y, char z)
+        {
+
+            int counter1 = 0;
+            int counter2 = 0;
+            foreach (KeyValuePair<char, double> constpair in dic)
+            {
+                if (constpair.Key == x)
+                {
+                    counter1++;
+
+                    foreach(KeyValuePair<char, double> constpair2 in dic)
+                    {
+                        if(constpair2.Key==z)
+                        {
+                            counter2++;
+
+                            if (y == "+")
+                            {
+                                double result = constpair.Value + constpair2.Value;
+                                Console.WriteLine("={0}", result);
+                                return "=" + result;
+                            }
+                            else if (y == "-")
+                            {
+                                double result = constpair.Value - constpair2.Value;
+                                Console.WriteLine("={0}", result);
+                                return "=" + result;
+                            }
+                            else if (y == "*")
+                            {
+                                double result = constpair.Value * constpair2.Value;
+                                Console.WriteLine("={0}", result);
+                                return "=" + result;
+                            }
+                            else if (y == "/")
+                            {
+                                double result = constpair.Value / constpair2.Value;
+                                Console.WriteLine("={0}", result);
+                                return "=" + result;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            if (counter1 == 0|counter2==0)
+            {
+                Console.WriteLine("{0} or {1} doesn't exist.", x, z);
+                return null;
+            }
+
+            return null;
+
+        }
+
     }
 }
