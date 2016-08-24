@@ -75,9 +75,17 @@ namespace SimpleCalculator
                         return "=" + result;
                     }else if(y=="/")
                     {
-                        double result = constpair.Value / z;
-                        Console.WriteLine("={0}", result);
-                        return "=" + result;
+                        if (z != 0)
+                        {
+                            double result = constpair.Value / z;
+                            Console.WriteLine("={0}", result);
+                            return "=" + result;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Dividing by 0 is not allowed.");
+                            return null;
+                        }
                     }
                     
                 }
@@ -132,9 +140,17 @@ namespace SimpleCalculator
                             }
                             else if (y == "/")
                             {
-                                double result = constpair.Value / constpair2.Value;
-                                Console.WriteLine("={0}", result);
-                                return "=" + result;
+                                if (constpair2.Value != 0)
+                                {
+                                    double result = constpair.Value / constpair2.Value;
+                                    Console.WriteLine("={0}", result);
+                                    return "=" + result;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Dividing by 0 is not allowed.");
+                                    return null;
+                                }
                             }
                         }
                     }

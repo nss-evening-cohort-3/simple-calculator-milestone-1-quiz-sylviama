@@ -18,7 +18,7 @@ namespace SimpleCalculator
             }
             else
             {
-                Console.WriteLine("Divided Number cannot be 0");
+                Console.WriteLine("Dividing by 0 is not allowed.");
                 return null;
             }
         }
