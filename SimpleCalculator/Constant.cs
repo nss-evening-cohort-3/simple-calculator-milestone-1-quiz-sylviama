@@ -15,7 +15,7 @@ namespace SimpleCalculator
         //x=5 pattern
         public string ConstantSetFunction(char x, double y)
         {
-            dic.Add('a', 0.3);
+            //dic.Add('a', 0.3);
             
 
             if(!dic.ContainsKey(x))
