@@ -85,12 +85,28 @@ namespace SimpleCalculator.Tests
         }
 
         [TestMethod]
+        public void ConstTestEmptyCharPlusNum()
+        {
+            Constant consta = new Constant();
+            string constResult = consta.constOperationFunction('k', "+", 5);
+            Assert.IsNull(constResult);
+        }
+
+        [TestMethod]
         public void ConstTestCharMinusNum()
         {
             Constant consta = new Constant();
             consta.ConstantSetFunction('g', 7);
             string constResult = consta.constOperationFunction('g', "-", 5);
             Assert.AreEqual("=2", constResult);
+        }
+
+        [TestMethod]
+        public void ConstTestEmptyCharMinusNum()
+        {
+            Constant consta = new Constant();
+            string constResult = consta.constOperationFunction('l', "-", 5);
+            Assert.IsNull(constResult);
         }
 
         [TestMethod]
@@ -103,6 +119,14 @@ namespace SimpleCalculator.Tests
         }
 
         [TestMethod]
+        public void ConstTestEmptyCharTimesNum()
+        {
+            Constant consta = new Constant();
+            string constResult = consta.constOperationFunction('m', "*", 5);
+            Assert.IsNull(constResult);
+        }
+
+        [TestMethod]
         public void ConstTestCharDivideNum()
         {
             Constant consta = new Constant();
@@ -112,11 +136,27 @@ namespace SimpleCalculator.Tests
         }
 
         [TestMethod]
+        public void ConstTestEmptyCharDivideNum()
+        {
+            Constant consta = new Constant();
+            string constResult = consta.constOperationFunction('n', "/", 5);
+            Assert.IsNull(constResult);
+        }
+
+        [TestMethod]
         public void ConstTestCharDivideNum0()
         {
             Constant consta = new Constant();
             consta.ConstantSetFunction('j', 8);
             string constResult = consta.constOperationFunction('j', "/", 0);
+            Assert.IsNull(constResult);
+        }
+
+        [TestMethod]
+        public void ConstTestEmptyCharDivideNum0()
+        {
+            Constant consta = new Constant();
+            string constResult = consta.constOperationFunction('o', "/", 0);
             Assert.IsNull(constResult);
         }
 
