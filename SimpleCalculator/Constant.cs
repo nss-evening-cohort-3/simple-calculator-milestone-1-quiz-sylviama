@@ -15,7 +15,8 @@ namespace SimpleCalculator
         //x=5 pattern
         public string ConstantSetFunction(char x, double y)
         {
-            //dic.Add('a', 0.3);
+            dic.Add('a', 0.3);
+            
 
             if(!dic.ContainsKey(x))
             {
@@ -33,17 +34,26 @@ namespace SimpleCalculator
         //x pattern
         public string ConstantGetFunction(char x)
         {
+            int counter = 0;
             foreach (KeyValuePair<char, double> constpair in dic)
             {
                 if (constpair.Key== x)
                 {
+                    counter++;
                     Console.WriteLine("{0}", constpair.Value);
                     return Convert.ToString(constpair.Value);
                 }
                 
             }
 
+            if(counter==0)
+            {
+                Console.WriteLine("{0} doesn't have an assigned value yet.", x);
+                return null;
+            }
+
             return null;
+            
             
         }
 
